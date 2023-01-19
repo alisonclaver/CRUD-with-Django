@@ -1,0 +1,59 @@
+{% load static %}
+
+<html>
+    <head>
+        <style>
+            table {
+                border: 1px solid black;
+                color: black;
+            }
+
+            table.styled {
+                border-collapse: collapse;
+                width: 100%;
+            }
+
+            table.styled th,
+            table.styled td {
+                border: 1px solid black;
+                padding: 8px;
+                text-align: left;
+            }
+
+            table.styled th {
+                background-color: #f2f2f2;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>LIST OF PEOPLE</h1>
+
+    <table class="styled">
+        <thread>
+          <th>Name</th>
+          <th>Phone</th>
+          <th>Email</th>
+          <th>Profile Pic</th>
+          <td></td>
+          <td></td>
+        </thread>
+
+        <tbody>
+            {% for people in peoples %}
+          <td>{{people.name}}</td>
+          <td>{{people.phone}}</td>
+          <td>{{people.email}}</td>
+          <td><img src="{{ people.profile_pic.url }}" alt=" {{ people.name }} " width="200px" height="200px"></td>
+          <td><a href="{% url 'person' people.id %}">CLICK ME</a></td>
+          <td>
+                <a href="{% url 'delete_view' people.pk %}">DELETE</a>
+          </td>
+        <tbody>
+        {% endfor %}
+
+      </table>
+      <br>
+
+      <a href="{% url 'create' %}">CREATE ANOTHER</a>
+</body>
+</html>

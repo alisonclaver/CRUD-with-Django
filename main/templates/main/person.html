@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>{{people.name}}</title>
+        <style>
+            .container {
+                width: 700px;
+                height: 800px;
+                color: white;
+                border-radius: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        
+        <h1>SPECIFIC PERSON PAGE</h1>
+        <p>You are at {{ people.name }} page</p>
+
+        <div class="container">
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form.as_p}}
+
+            <input type="submit" value="Save">
+        </form>
+        </div>
+
+    </body>
+</html>
+
+
+
+
